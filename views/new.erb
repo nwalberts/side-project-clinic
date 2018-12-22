@@ -1,0 +1,16 @@
+<h1>Distance Form</h1>
+
+<form action="/trips" method="post">
+  <label for="origin">Origin:</label>
+  <input type="text" name="origin" id="origin" value="">
+
+  <label for="destination">Destination:</label>
+  <input type="text" name="destination" id="destination" value="">
+
+  <input type="submit" value="Find Distance">
+</form>
+
+<% if @results %>
+  The distance in miles is: <%= @distance %>
+  The duration of the trip in minutes is: <%= @duration %>
+<% end %>
