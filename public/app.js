@@ -12,6 +12,7 @@ let giphyRequest = (query) => {
   })
   .then(response => response.text())
   .then(body => {
+    debugger
     let bodyParsed = JSON.parse(body);
     let firstImage = bodyParsed.data[0].images.fixed_height.url
 
@@ -20,4 +21,4 @@ let giphyRequest = (query) => {
   .catch(error => console.error(`Error in fetch: ${error.message}`));
 }
 
-giphyRequest("kittens")
+giphyRequest("steven-universe")

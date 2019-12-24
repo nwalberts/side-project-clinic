@@ -1,15 +1,23 @@
-let WriteFilePlugin = require('write-file-webpack-plugin');
+var webpack = require('webpack');
 
-var config = {
+module.exports = {
   entry: {
-    path: './src/main.js',
+    path: './src/main.js'
   },
   output: {
-    path: __dirname + '/public',
+    path: __dirname+'/build',
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -17,10 +25,9 @@ var config = {
       }
     ]
   },
-  plugins: [
-    new WriteFilePlugin()
-  ],
-  devtool: 'eval-source-map'
+  devtool: 'eval-source-map',
+  devServer: {
+    contentBase: './build',
+    inline: true
+  }
 }
-
-module.exports = config;
